@@ -1,5 +1,3 @@
-import pytest
-
 from src.quiz_game.question_model import Question
 
 
