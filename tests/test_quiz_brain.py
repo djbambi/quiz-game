@@ -10,6 +10,7 @@ def test_quiz_brain_initial_state():
     assert quiz.question_number == 0
     assert quiz.question_list == questions
 
+
 def test_next_question_prompts_correctly():
     questions = [SimpleNamespace(text="Sky is blue?")]
     captured = {}
