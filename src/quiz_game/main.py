@@ -1,7 +1,5 @@
 from question_model import Question
 from quiz_brain import QuizBrain
-
-# from data import question_data
 from fetch_questions import fetch_questions, extract_question_data
 
 fetched_questions = fetch_questions()
