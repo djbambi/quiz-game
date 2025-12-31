@@ -54,3 +54,19 @@ def test_next_question_asks_second_question_on_second_call():
     assert prompts[0] == "Q.1: First? (True/False)?: "
     assert prompts[1] == "Q.2: Second? (True/False)?: "
     assert quiz.question_number == 2
+
+
+def test_still_has_questions_returns_true_when_questions_remain():
+    questions = [SimpleNamespace(text="Q1"), SimpleNamespace(text="Q2")]
+    quiz = QuizBrain(questions)
+
+    assert quiz.still_has_questions() is True
+
+
+def test_still_has_questions_false_at_exact_length():
+    questions = [SimpleNamespace(text="Q1"), SimpleNamespace(text="Q2")]
+    quiz = QuizBrain(questions)
+
+    quiz.question_number = 2
+
+    assert quiz.still_has_questions() is False
