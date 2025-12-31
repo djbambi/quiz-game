@@ -1,8 +1,13 @@
 from question_model import Question
 from quiz_brain import QuizBrain
-from data import question_data
+
+# from data import question_data
+from fetch_questions import fetch_questions, extract_question_data
+
+fetched_questions = fetch_questions()
 
 question_bank = []
+question_data = extract_question_data(fetched_questions)
 
 for question in question_data:
     new_question = Question(question["text"], question["answer"])
