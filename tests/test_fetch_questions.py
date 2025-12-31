@@ -1,4 +1,5 @@
 from src.quiz_game.fetch_questions import extract_question_data
+import pytest
 
 
 def test_extract_question_data_returns_expected_list():
@@ -25,3 +26,13 @@ def test_extract_question_data_returns_expected_list():
     ]
 
     assert extract_question_data(payload) == expected
+
+def test_extract_question_data_empty_results_returns_empty_list():
+    payload = {"response_code": 0, "results": []}
+    assert extract_question_data(payload) == []
+
+
+def test_extract_question_data_raises_when_response_code_not_zero():
+    payload = {"response_code": 1, "results": []}
+    with pytest.raises(ValueError):
+        extract_question_data(payload)
