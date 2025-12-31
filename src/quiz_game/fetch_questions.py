@@ -5,6 +5,5 @@ def extract_question_data(payload: dict) -> list[dict]:
 
     results = payload["results"]
     return [
-        {"text": item["question"], "answer": item["correct_answer"]}
-        for item in results
+        {"text": item["question"], "answer": item["correct_answer"]} for item in results
     ]

@@ -27,6 +27,7 @@ def test_extract_question_data_returns_expected_list():
 
     assert extract_question_data(payload) == expected
 
+
 def test_extract_question_data_empty_results_returns_empty_list():
     payload = {"response_code": 0, "results": []}
     assert extract_question_data(payload) == []
