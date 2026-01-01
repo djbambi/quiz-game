@@ -37,3 +37,19 @@ def test_extract_question_data_raises_when_response_code_not_zero():
     payload = {"response_code": 1, "results": []}
     with pytest.raises(ValueError):
         extract_question_data(payload)
+
+
+def test_extract_question_data_unescapes_html_entities():
+    payload = {
+        "response_code": 0,
+        "results": [
+            {
+                "question": "It&#039;s &quot;dangerous&quot; &amp; weird &lt;test&gt;",
+                "correct_answer": "True",
+            }
+        ],
+    }
+
+    result = extract_question_data(payload)
+
+    assert result == [{"text": 'It\'s "dangerous" & weird <test>', "answer": "True"}]
